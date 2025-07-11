@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <title>Card Store Results</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>  
+    <body>
+        <h1>Available Copies of "{{ card }}"</h1>
+        {% for store in store_list %}
+            {% if store.quant >= 0 %}
+                <h2>{{ store.Name }}: {{ store.quant }}</h2>
+            {% endif %}
+        {% endfor %}
+        <!-- <a href="{{ url_for('cardstores') }}" class="button">Search Again</a>  -->
+
+        <form action="{{ url_for('cardstores') }}" >
+            <button type="submit">Search again</button>
+        </form>
+
+</html>

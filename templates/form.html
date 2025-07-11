@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <form action="{{ url_for("cardstores")}}" method="post">
+        <input class = "input" type="text" id="card" name="card" placeholder="Search for a card"><br>
+
+        <input type="checkbox" id="nrg" name="cardstore" value="nrg">
+        <label for="nrg"> NRG</label>
+
+        <input type="checkbox" id="pt" name="cardstore" value="pt">
+        <label for="pt"> Pastimes</label>
+
+        <input type="checkbox" id="bh" name="cardstore" value="bh">
+        <label for="bh"> Boar's Hat</label><br>
+
+        <button type="submit">Search</button>
+        </form>
+    </body
+</html>
