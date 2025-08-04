@@ -1,8 +1,6 @@
 
 from app import app
-
-
-
+import aiohttp
 from flask import Flask, request, render_template
 
 import stores.boarshat 
@@ -34,15 +32,14 @@ bh_storage = {
 store_list = [nrg_storage, pt_storage, bh_storage]
 
 @app.route('/', methods =["GET", "POST"])
-def cardstores():
+async def cardstores():
 
    if request.method == "POST":
       chosen_stores = request.form.getlist("cardstore")
       card = request.form.get("card")
-
       for store in store_list:
          if store["id"] in chosen_stores:
-            store["quant"] = store["obj"].get_card(card)
+            store["quant"] = await store["obj"].get_card(card)
          else:
             store["quant"] = -1 
 
